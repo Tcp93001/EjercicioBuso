@@ -21,9 +21,8 @@ function retrieveRouteData() {
     method: 'GET',
     dataType: 'json',
     success: function(data){
-      console.log(data.data.routes)
       let informationToShow = data.data.routes.map((elem, index) => {
-        return armadoTabla(elem, index);
+        return makingTable(elem, index);
       })
     },
     error: function(err){
@@ -32,17 +31,16 @@ function retrieveRouteData() {
   });
 }
 
-function armadoTabla(elem, index) {
-  let secuencia = index + 1;
+function makingTable(elem, index) {
+  let secuence = index + 1;
   elem.id = ((elem.id).length == 1) ? elem.id = "Sin registro" : elem.id
   let step = $('#inicioDeTabla');
-  let tableContent = '<tr><th scope="row">' + secuencia + '</th>';
+  let tableContent = '<tr><th scope="row">' + secuence + '</th>';
   tableContent += '<td>' + elem.id + '</td>';
   tableContent += '<td>' + elem.company_name + '</td>';
   tableContent += '<td>' + elem.arrival_time + '</td>';
   tableContent += '<td>' + elem.departure_time + '</td>';
   tableContent += '<td>' + elem.origin_id + '</td>';
   tableContent += '<td>' + elem.destination_id + '</td>';
-
   step.append(tableContent);
 }
