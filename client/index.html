@@ -17,13 +17,13 @@
           <div class="offset-1 col-md-10">
             <div class="variableContent marginTopBottom">
               <div class="tableContent">
-                <table class="table table-striped table-dark">
+                <table class="table table-striped text-center">
                   <thead>
                     <tr>
                       <th scope="col">Índice</th>
                       <th scope="col">Id</th>
                       <th scope="col">Empresa</th>
-                      <th scope="col">Arribo</th>
+                      <th scope="col">Llegada</th>
                       <th scope="col">Salida</th>
                       <th scope="col">Origen</th>
                       <th scope="col">Destino</th>
@@ -35,11 +35,61 @@
               </div>
             </div>
           </div>
-          <button class="btn-dark btnStyle offset-2 col-md-3" onclick="createRoute()">Crear nueva ruta</button>
-          <button class="btn-danger btnStyle offset-2 col-md-3" onclick="delete_route()">Borrar ruta existente</button>
+          <button class="btn-dark btnStyle offset-2 col-md-3" data-toggle="modal" data-target="#createModal">Crear nueva ruta</button>
+          <button class="btn-danger btnStyle offset-2 col-md-3" data-toggle="modal" data-target="#deleteModal">Borrar ruta existente</button>
         </div>
       </div>
     </div>
+    <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="createModalLabel">Crear una nueva ruta</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+                <label for="createFormId">Id</label>
+                <input type="text" class="form-control" id="createFormId" placeholder="Escriba el ID de la ruta...">
+                <label for="createFormCompany">Empresa</label>
+                <input type="text" class="form-control" id="createFormCompany" placeholder="Nombre de la empresa">
+                <label for="createFormArrival">Llegada</label>
+                <input type="text" class="form-control" id="createFormArrival" placeholder="YYYY-MM-DD">
+                <label for="createFormDeparture">Salida</label>
+                <input type="text" class="form-control" id="createFormDeparture" placeholder="YYYY-MM-DD">
+                <label for="createFormOrigin">Origen</label>
+                <input type="text" class="form-control" id="createFormOrigin" placeholder="Escriba el origen de la ruta...">
+                <label for="createFormDestination">Destino</label>
+                <input type="text" class="form-control" id="createFormDestination" placeholder="Escriba el destino de la ruta...">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="createRoute()">Crear ruta</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Borrar ruta existente</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <label for="createFormOrigin">Origen</label>
+                <input type="text" class="form-control text-center" id="deleteRouteId" placeholder="Número de ruta...">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="deleteRoute()">Borrar ruta</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     <script src="../node_modules/popper.js/dist/popper.min.js"></script>
