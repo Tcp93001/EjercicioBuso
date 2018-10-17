@@ -2,42 +2,36 @@ body {
   color: #000000;
 }
 
-// Container enclosed
-.enclosed{
-  border-top-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0px 0px 2px 4px #f77326cb;
-  padding: 15px;
-  margin: 5vh auto;
-}
-
 // variableContent
-.variableContent{
-  width: auto;
-  min-height: auto;
-  div {
+.variableContent>div {
     padding: 20px;
-    background-color: rgb(204, 172, 130);
+    background-color: #effafdf8;
     min-height: 50px;
+    box-shadow: 2px 2px #74797aa8;
   }
-}
 
-// text spacing
+// spacing
 .marginTopBottom{
   margin-top: 15px;
   margin-bottom: 25px;
 }
 
+.paddingTopBottom{
+  padding-top: 25px;
+  padding-bottom: 30px;
+}
+
+.textShadow {
+  text-shadow: 2px 2px #7e828383;
+}
 // buttons
 .btnStyle{
   border-radius: 5px;
   height: 3em;
-  font-weight: 600;
+  font-weight: 500;
 }
 
-.tableContent{
+.roundedBorder{
   border-radius: 10px;
 }
 

@@ -6,27 +6,27 @@ const headersSent = {
   'x-api-key': 'Yrk3AZ1yOT7PIBbWJNrkB541cLBnff5w6cSZH9qr'
 };
 
-$( document ).ready(function() {
+$(document).ready(function() {
   retrieveRouteData()
 });
 
-function delete_route() {
+function deleteRoute() {
   $('#deleteModal').modal('toggle')
   let urlBusDelete = urlBus + '/' + $('#deleteRouteId').val()
-  // $.ajax({
-  //   url: urlBusDelete,
-  //   headers: headersSent,
-  //   method: 'DELETE',
-  //   dataType: 'json',
-  //   success: function(data){
-    //     console.log(data)
-  //     $("#inicioDeTabla").empty()
-  //     retrieveRouteData();
-  //   },
-  //   error: function(err){
-    //     console.log(err)
-  //   }
-  // });
+
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": urlBusDelete,
+    "method": "DELETE",
+    "headers": headersSent
+  }
+
+  $.ajax(settings).done(function (response) {
+    $("#inicioDeTabla").empty();
+    retrieveRouteData();
+  });
+  resetValuesModal();
 }
 
 function createRoute() {
@@ -38,23 +38,21 @@ function createRoute() {
     "arrival_time": $("#createFormArrival").val(),
     "company_name": $("#createFormCompany").val()
   }
-  $('#createModal').modal('toggle')
-  console.log("sent sent sent");
-  // $.ajax({
-  //   url: urlBus,
-  //   headers: headersSent,
-  //   data: JSON.stringify(newRouteInformation),
-  //   method: 'POST',
-  //   dataType: 'json',
-  //   success: function(data){
-    //     console.log(data)
-  //     $("#inicioDeTabla").empty()
-  //     retrieveRouteData();
-  //   },
-  //   error: function(err){
-    //     console.log(err)
-  //   }
-  // });
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": urlBus,
+    "method": "POST",
+    "headers": headersSent,
+    "processData": false,
+    "data": JSON.stringify(newRouteInformation)
+  }
+
+  $.ajax(settings).done(function (response) {
+    $("#inicioDeTabla").empty()
+    retrieveRouteData();
+  });
+
   resetValuesModal();
 }
 
@@ -65,22 +63,22 @@ function resetValuesModal() {
   $("#createFormDeparture").val("");
   $("#createFormArrival").val("");
   $("#createFormCompany").val("");
+  $("#deleteRouteId").val("");
 }
 
 function retrieveRouteData() {
-  $.ajax({
-    url: urlBus,
-    headers: headersSent,
-    method: 'GET',
-    dataType: 'json',
-    success: function(data){
-      let informationToShow = data.data.routes.map((elem, index) => {
-        return makingTable(elem, index);
-      })
-    },
-    error: function(err){
-      console.log(err)
-    }
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": urlBus,
+    "method": "GET",
+    "headers": headersSent
+  }
+
+  $.ajax(settings).done(function (response) {
+    let informationToShow = response.data.routes.map((elem, index) => {
+      return makingTable(elem, index);
+    })
   });
 }
 
@@ -89,13 +87,13 @@ function makingTable(elem, index) {
   console.log(elem.id)
   elem.id = (elem.id === "[object Undefined]") ? elem.id = "Sin registro" : elem.id
   let step = $('#inicioDeTabla');
-  let tableContent = '<tr><th scope="row">' + secuence + '</th>';
+  let tableContent = '<tr><td scope="row">' + secuence + '</td>';
   tableContent += '<td>' + elem.id + '</td>';
   tableContent += '<td>' + elem.company_name + '</td>';
   tableContent += '<td>' + elem.arrival_time + '</td>';
   tableContent += '<td>' + elem.departure_time + '</td>';
   tableContent += '<td>' + elem.origin_id + '</td>';
-  tableContent += '<td>' + elem.destination_id + '</td>';
+  tableContent += '<td>' + elem.destination_id + '</td><tr>';
   step.append(tableContent);
 }
 

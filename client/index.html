@@ -8,20 +8,20 @@
   </head>
 
   <body>
-    <div class="container">
-      <div class="enclosed">
+    <div class="container bg-info roundedBorder shadow marginTopBottom">
+      <div class="paddingTopBottom">
         <div class="row">
-          <h1 class="offset-4 col--md-4 marginTopBottom">Rutas de Autobús</h1>
+          <h1 class="offset-3 col-md-6 text-center marginTopBottom textShadow font-weight-bold">Rutas de Autobús</h1>
         </div>
         <div class="row">
           <div class="offset-1 col-md-10">
             <div class="variableContent marginTopBottom">
-              <div class="tableContent">
-                <table class="table table-striped text-center">
+              <div class="roundedBorder shadow table-responsive">
+                <table class="table text-center font-weight-light text-dark roundedBorder">
                   <thead>
                     <tr>
                       <th scope="col">Índice</th>
-                      <th scope="col">Id</th>
+                      <th scope="col">ID</th>
                       <th scope="col">Empresa</th>
                       <th scope="col">Llegada</th>
                       <th scope="col">Salida</th>
@@ -35,16 +35,16 @@
               </div>
             </div>
           </div>
-          <button class="btn-dark btnStyle offset-2 col-md-3" data-toggle="modal" data-target="#createModal">Crear nueva ruta</button>
+          <button class="btn-primary btnStyle offset-2 col-md-3" data-toggle="modal" data-target="#createModal">Crear nueva ruta</button>
           <button class="btn-danger btnStyle offset-2 col-md-3" data-toggle="modal" data-target="#deleteModal">Borrar ruta existente</button>
         </div>
       </div>
     </div>
     <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content bg-light">
           <div class="modal-header">
-            <h5 class="modal-title" id="createModalLabel">Crear una nueva ruta</h5>
+            <h5 class="modal-title text-center text-info font-weight-bold bg-light" id="createModalLabel">Crear una nueva ruta</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -65,27 +65,27 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="createRoute()">Crear ruta</button>
+            <button type="button" class="btn btn-outline-primary" data-dismiss="modal" onclick="createRoute()">Crear ruta</button>
           </div>
         </div>
       </div>
     </div>
     <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-          <div class="modal-content">
+          <div class="modal-content bg-light">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Borrar ruta existente</h5>
+              <h5 class="modal-title text-danger font-weight-bold" id="exampleModalLabel">Borrar ruta existente</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-                <label for="createFormOrigin">Origen</label>
+                <label for="deleteFormOrigin">Número de ID</label>
                 <input type="text" class="form-control text-center" id="deleteRouteId" placeholder="Número de ruta...">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="deleteRoute()">Borrar ruta</button>
+                <button type="button" class="btn btn-outline-danger" data-dismiss="modal" onclick="deleteRoute()">Borrar ruta</button>
             </div>
           </div>
         </div>
