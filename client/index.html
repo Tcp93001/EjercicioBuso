@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="enclosed">
+        <div class="row">
+          <h1 class="offset-4 col--md-4 marginTopBottom">Rutas de Autobús</h1>
+        </div>
+        <div class="row">
+          <div class="offset-1 col-md-10">
+            <div class="variableContent marginTopBottom">
+              <div class="tableContent">
+                <table class="table table-striped table-dark">
+                  <thead>
+                    <tr>
+                      <th scope="col">Índice</th>
+                      <th scope="col">Id</th>
+                      <th scope="col">Empresa</th>
+                      <th scope="col">Arribo</th>
+                      <th scope="col">Salida</th>
+                      <th scope="col">Origen</th>
+                      <th scope="col">Destino</th>
+                    </tr>
+                  </thead>
+                  <tbody id="inicioDeTabla">
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <button class="btn-dark btnStyle offset-2 col-md-3" onclick="createRoute()">Crear nueva ruta</button>
+          <button class="btn-danger btnStyle offset-2 col-md-3" onclick="delete_route()">Borrar ruta existente</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../node_modules/popper.js/dist/popper.min.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../client/functionality.js"></script>
+
+  </body>
+
+</html>
